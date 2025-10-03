@@ -61,29 +61,39 @@
 								</div>
 							</section>
 							<style>
-  .image.square {
-    width: 540px;       /* set square size */
-    height: 300px;      /* same as width */
-    overflow: hidden;   /* crop overflow */
-	border: none;
-    border-radius: 0; /* optional rounded edges */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.image.square {
+  width: 100%;           /* take full width of parent */
+  max-width: 540px;      /* don’t stretch beyond laptop size */
+  aspect-ratio: 16/9;    /* keeps image proportion (or use 1/1 for square) */
+  overflow: hidden;
+  border: none;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .image.square img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  /* ensures image fills the square without distortion */
-	border-radius: 0;  /* no circle */
-	transition: transform 0.3s ease; 
+.image.square img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform 0.3s ease;
+}
+
+.image.square:hover img {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* Optional: tweak for smaller screens */
+@media (max-width: 768px) {
+  .image.square {
+    max-width: 100%;   /* use full container width */
+    aspect-ratio: 4/3; /* more suitable for mobile */
   }
-    .image.square:hover img {
-    transform: scale(1.05);  /* expands slightly */
-    cursor: pointer;     
-	}
-</style>	
+}
+							</style>	
 						<!-- Python -->
 							<section id="python" class="main">
 								<div class="spotlight">
@@ -360,4 +370,5 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
+
 </html>
